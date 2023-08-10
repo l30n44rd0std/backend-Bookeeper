@@ -1,0 +1,26 @@
+{
+  "name": "backend-bookeeper",
+  "version": "1.0.0",
+  "description": "\"# backend-Bookeeper\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/l30n44rd0std/backend-Bookeeper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/l30n44rd0std/backend-Bookeeper/issues"
+  },
+  "homepage": "https://github.com/l30n44rd0std/backend-Bookeeper#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0",
+    "nodemon": "^3.0.1",
+    "sequelize": "^6.32.1"
+  }
+}
