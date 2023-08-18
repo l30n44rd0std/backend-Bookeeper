@@ -19,7 +19,7 @@ const LivrosFavoritos = db.define(
     resenha: {
       type: DataTypes.STRING,
     },
-    usuairo_id: {
+    usuario_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
