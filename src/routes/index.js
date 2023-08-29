@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const routersUser = require("./usuarioRoutes/usuarioRoutes")
+const routersUser = require("./user/index")
 
 router.use("/user", routersUser)
 
