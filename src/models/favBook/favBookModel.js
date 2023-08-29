@@ -1,25 +1,25 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const db = require("../../db/connect");
 
-const LivrosFavoritos = db.define(
-  "LivrosFavoritos",
+const favBooks = db.define(
+  "favBooks",
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    titulo: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    imagem_capa: {
+    cover: {
       type: DataTypes.STRING,
     },
-    resenha: {
+    repassword: {
       type: DataTypes.STRING,
     },
-    usuario_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -33,8 +33,8 @@ const LivrosFavoritos = db.define(
   },
   {
     timestamps: true,
-    tableName: "livro_favorito",
+    tableName: "favorite_book",
   }
 );
 
-module.exports = LivrosFavoritos;
+module.exports = favBooks;
