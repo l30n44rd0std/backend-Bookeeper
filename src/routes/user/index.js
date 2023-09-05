@@ -76,11 +76,11 @@ router.route("/:id/update").put(ensureAuthenticated, async (req, res) => {
 //rota para página de perfil do usuário
 router.route("/:id/profile").get(ensureAuthenticated, async (req, res) => {
   try {
-    const user = await userModel.findByPk(req.params.id);
+    const user = await userModel.findByPk(req.user.id);
     if (!user) {
       return res.status(404).json({ message: "Usuário não encontrado." });
     }
-    res.send(user);
+    res.json({ username: user.username, email: user.email });
   } catch (err) {
     console.error(`Error ao buscar perfil do usuário: ${err}`);
     res.status(500).json({ message: "Erro ao buscar perfil do usuário." });
