@@ -1,10 +1,11 @@
 const { sign, verify } = require("jsonwebtoken")
 
-function authenticationUser({ email, password }) {
+function authenticationUser({ username, email, password }) {
     try {
 
         const token = sign(
             {
+                username: username,
                 email: email,
                 password: password,
             },
@@ -12,7 +13,7 @@ function authenticationUser({ email, password }) {
            
         );
         console.log(token);
-        return {email: email, token: token};
+        return {username: username, email: email, token: token};
     } catch (err) {
         throw new Error('error generetor token');
     }

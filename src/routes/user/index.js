@@ -26,16 +26,16 @@ router.route("/register").post(async (req, res) => {
 
 // rota de login do usuário
 router.route("/login").post(async (req, res) => {
-  const { email, password } = req.body;
+  const { username, email, password } = req.body;
 
   try {
       const user = await userModel.findOne({where: { email: email, password: password },});
 
       if(user.password === password) {
         try{
-            const responseDataUser = authenticationUser({email: email, password: password});
+            const responseDataUser = authenticationUser({username: user.dataValues.username, email: email, password: password});
             console.log(responseDataUser);
-            return res.json({email:email, statusLogin: true, ...responseDataUser})
+            return res.json({username: user.dataValues.username, email:email, statusLogin: true, ...responseDataUser})
         } catch(err){
             return res.status(401).json({msg: 'Algo deu errado, tente novamente'})
         }
@@ -49,13 +49,16 @@ router.route("/login").post(async (req, res) => {
 
 //rota para atualizar info(e-mail ou password) do usuário
 router.route("/:id/update").put(ensureAuthenticated, async (req, res) => {
-  const { email, password } = req.body;
+  const { username, email, password } = req.body;
 
   try {
     const user = await userModel.findByPk(req.params.id);
 
     if (!user) {
       return res.status(404).json({ message: "Usuário não encontrado." });
+    }
+    if (username) {
+      user.username = username;
     }
     //se o user atualizar apenas o e-mail
     if (email) {

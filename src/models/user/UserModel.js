@@ -10,7 +10,7 @@ const user = db.define(
             primaryKey: true,
         },
         username: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
         },
         email: {
             type: DataTypes.STRING,
